@@ -13,6 +13,12 @@
         android:theme="@style/Theme.ToyStore"
         tools:targetApi="31">
         <activity
+            android:name=".Admin"
+            android:exported="false" />
+        <activity
+            android:name=".Home"
+            android:exported="false" />
+        <activity
             android:name=".Register"
             android:exported="false" />
         <activity
