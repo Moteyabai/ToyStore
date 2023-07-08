@@ -48,7 +48,7 @@ public class Register extends AppCompatActivity {
                     if (userPassword.equals(confirmPass)) {
                         Boolean checker = DB.checkEmail(userEmail);
                         if (!checker) {
-                            Boolean insert = DB.insertData(userEmail, userPassword, userName, userPhone, userRole);
+                            Boolean insert = DB.insertUser(userEmail, userPassword, userName, userPhone, userRole);
                             if (insert) {
                                 Toast.makeText(Register.this, "Registered successfully", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), Register.class);
@@ -69,7 +69,7 @@ public class Register extends AppCompatActivity {
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Register.this, MainActivity.class);
+                Intent intent = new Intent(Register.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
