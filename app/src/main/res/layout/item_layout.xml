@@ -3,10 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:elevation="2dp"
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true"
-    app:cardCornerRadius="8dp">
+    app:cardCornerRadius="8dp"
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -31,18 +33,39 @@
             android:src="@drawable/ic_launcher_background" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/txtProName"
             android:text="something"
             android:layout_marginLeft="70dp" />
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/txtDesc"
             android:text="Desc"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="70dp" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="85dp"
+            android:text="400$" />
+
+        <TextView
+            android:id="@+id/proId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="15dp"
+            android:text="1" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

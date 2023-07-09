@@ -15,8 +15,6 @@ public class Admin extends AppCompatActivity {
 
     Button logout, user, product;
 
-    ArrayList<Product> proList;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

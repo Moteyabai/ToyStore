@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".ProductAddNew">
+    <TextView
+        android:id="@+id/getId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ID"
+        android:textSize="18dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="20dp"/>
+    <EditText
+        android:id="@+id/proNameUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Product Name"/>
+    <EditText
+        android:id="@+id/priceUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:inputType="number"
+        android:hint="Price"/>
+    <EditText
+        android:id="@+id/descUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Description"/>
+    <Button
+        android:id="@+id/proUpdate"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="30dp"
+        android:text="Update"
+        android:textSize="20dp"/>
+
+</LinearLayout>

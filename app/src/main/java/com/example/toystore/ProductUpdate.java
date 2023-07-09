@@ -1,0 +1,66 @@
+package com.example.toystore;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class ProductUpdate extends AppCompatActivity {
+
+    TextView eId;
+    EditText eProName, ePrice, eDesc;
+    String id, name, desc;
+    double price;
+    Button updateBtn;
+    DBHelper helper;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_product_update);
+        eProName = (EditText) findViewById(R.id.proNameUpdate);
+        ePrice = (EditText) findViewById(R.id.priceUpdate);
+        eDesc = (EditText) findViewById(R.id.descUpdate);
+        eId = (TextView) findViewById(R.id.getId);
+        updateBtn = (Button) findViewById(R.id.proUpdate);
+
+        helper = new DBHelper(this);
+
+        //data from Intent
+
+        Intent intent = getIntent();
+        if(intent!=null){
+            id = intent.getStringExtra("id");
+            name = intent.getStringExtra("proName");
+            price = Double.parseDouble(intent.getStringExtra("price"));
+            desc = intent.getStringExtra("desc");
+        }
+
+        //Show product data
+        eId.setText(id);
+        eProName.setText(name);
+        ePrice.setText((int) price);
+        eDesc.setText(desc);
+
+        updateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int nID = Integer.parseInt(eId.getText().toString());
+                String nName = eProName.getText().toString();
+                double nPrice = Double.parseDouble(ePrice.getText().toString());
+                String nDesc = eDesc.getText().toString();
+
+                if(helper.updateProduct(nID,nName,nPrice,nDesc)){
+                    Toast.makeText(ProductUpdate.this, "Updated!", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(ProductUpdate.this, "Error!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+    }
+}
