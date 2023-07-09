@@ -6,14 +6,14 @@
     app:cardElevation="12dp"
     app:cardCornerRadius="16dp"
     android:layout_margin="16dp"
-    android:backgroundTint="#E6E3E3"
-    >
+    android:backgroundTint="#E6E3E3">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,17 +25,17 @@
                 android:layout_height="wrap_content"
                 android:text="ID: "
                 android:textSize="24dp"
-                android:textColor="@color/black"
-                />
+                android:textColor="@color/black" />
+
             <TextView
                 android:id="@+id/id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
                 android:textSize="24dp"
-                android:textColor="@color/black"
-                />
+                android:textColor="@color/black" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,17 +47,17 @@
                 android:layout_height="wrap_content"
                 android:text="Email: "
                 android:textSize="24dp"
-                android:textColor="@color/black"
-                />
+                android:textColor="@color/black" />
+
             <TextView
                 android:id="@+id/email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
                 android:textSize="24dp"
-                android:textColor="@color/black"
-               />
+                android:textColor="@color/black" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -69,17 +69,17 @@
                 android:layout_height="wrap_content"
                 android:text="Password: "
                 android:textSize="24dp"
-                android:textColor="@color/black"
-                />
+                android:textColor="@color/black" />
+
             <TextView
                 android:id="@+id/password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
                 android:textSize="24dp"
-                android:textColor="@color/black"
-                />
+                android:textColor="@color/black" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -91,17 +91,17 @@
                 android:layout_height="wrap_content"
                 android:text="Name: "
                 android:textSize="24dp"
-                android:textColor="@color/black"
-                />
+                android:textColor="@color/black" />
+
             <TextView
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
                 android:textSize="24dp"
-                android:textColor="@color/black"
-                />
+                android:textColor="@color/black" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -113,17 +113,17 @@
                 android:layout_height="wrap_content"
                 android:text="Phone: "
                 android:textSize="24dp"
-                android:textColor="@color/black"
-                />
+                android:textColor="@color/black" />
+
             <TextView
                 android:id="@+id/phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
                 android:textSize="24dp"
-                android:textColor="@color/black"
-                />
+                android:textColor="@color/black" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -135,17 +135,17 @@
                 android:layout_height="wrap_content"
                 android:text="Role: "
                 android:textSize="24dp"
-                android:textColor="@color/black"
-                />
+                android:textColor="@color/black" />
+
             <TextView
                 android:id="@+id/role"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
                 android:textSize="24dp"
-                android:textColor="@color/black"
-                />
+                android:textColor="@color/black" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -157,13 +157,14 @@
                 android:id="@+id/update"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
-                android:text="Update"/>
+                android:text="Update" />
+
             <Button
                 android:id="@+id/delete"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="Delete"/>
+                android:text="Delete" />
 
 
         </LinearLayout>

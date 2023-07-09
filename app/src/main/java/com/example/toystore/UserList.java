@@ -1,14 +1,16 @@
 package com.example.toystore;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.toystore.Adapters.UserAdapter;
 
 import java.util.ArrayList;
 
@@ -19,6 +21,7 @@ public class UserList extends AppCompatActivity {
     DBHelper db;
     UserAdapter adapter;
     private static final int REQUEST_CODE_USER_UPDATE = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,19 +34,20 @@ public class UserList extends AppCompatActivity {
         phone = new ArrayList<>();
         role = new ArrayList<>();
         recyclerView = findViewById(R.id.recycleView);
-        adapter = new UserAdapter(this,id, email, password, name, phone, role);
+        adapter = new UserAdapter(this, id, email, password, name, phone, role);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         displaydata();
+
     }
-    private void displaydata(){
+
+    private void displaydata() {
         Cursor cursor = db.getData();
-        if(cursor.getCount()==0){
+        if (cursor.getCount() == 0) {
             Toast.makeText(UserList.this, "No Entry Exists", Toast.LENGTH_SHORT).show();
             return;
-        }
-        else {
-            while (cursor.moveToNext()){
+        } else {
+            while (cursor.moveToNext()) {
                 id.add(cursor.getString(0));
                 email.add(cursor.getString(1));
                 password.add(cursor.getString(2));

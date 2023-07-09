@@ -1,10 +1,7 @@
 package com.example.toystore.Adapters;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,14 +24,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     ArrayList<Product> productList;
     SQLiteDatabase db;
 
-    public ProductAdapter(ArrayList<Product> productList) {this.productList = productList;}
+    public ProductAdapter(ArrayList<Product> productList) {
+        this.productList = productList;
+    }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.item_layout,parent, false);
+        View view = inflater.inflate(R.layout.item_layout, parent, false);
         return new ViewHolder(view);
     }
 
@@ -43,6 +42,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         final Product product = productList.get(position);
         holder.proName.setText(product.getProductName());
+        holder.desc.setText(product.getDescription());
 
         //Edit
 
@@ -56,9 +56,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         int id = item.getItemId();
-                        if(id == R.id.update_menu){
+                        if (id == R.id.update_menu) {
 
-                        }else if(id == R.id.delete_menu){
+                        } else if (id == R.id.delete_menu) {
 
                         }
                         return false;
@@ -74,14 +74,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         return productList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView image;
-        TextView proName;
+        TextView proName,desc;
         ImageButton edit;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             proName = (TextView) itemView.findViewById(R.id.txtProName);
+            desc = (TextView) itemView.findViewById(R.id.txtDesc);
             edit = (ImageButton) itemView.findViewById(R.id.options);
         }
     }
