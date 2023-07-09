@@ -7,9 +7,11 @@
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true"
     app:cardCornerRadius="8dp">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ImageButton
             android:background="@null"
             android:layout_width="wrap_content"
@@ -18,21 +20,29 @@
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:src="@drawable/edit_item"
-            />
+            android:src="@drawable/edit_item" />
+
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:scaleType="fitXY"
             android:paddingLeft="5dp"
             android:id="@+id/viewInage"
-            android:src="@drawable/ic_launcher_background"/>
+            android:src="@drawable/ic_launcher_background" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/txtProName"
             android:text="something"
-            android:layout_marginLeft="70dp"/>
+            android:layout_marginLeft="70dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtDesc"
+            android:text="Desc"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="70dp" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

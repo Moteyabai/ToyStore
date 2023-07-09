@@ -1,19 +1,20 @@
-package com.example.toystore;
+package com.example.toystore.Adapters;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.toystore.DBHelper;
+import com.example.toystore.R;
+import com.example.toystore.UserUpdate;
 
 import java.util.ArrayList;
 
@@ -66,7 +67,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
         });
 
 
-
     }
 
     @Override
@@ -112,6 +112,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
             Toast.makeText(context, "Failed to delete user", Toast.LENGTH_SHORT).show();
         }
     }
+
     public void onUserClick(int position) {
         // Chuyển sang trang UserUpdate và truyền thông tin người dùng cần chỉnh sửa
         Intent intent = new Intent(context, UserUpdate.class);

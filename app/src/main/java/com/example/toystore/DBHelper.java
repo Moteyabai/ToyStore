@@ -22,7 +22,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE User (userID INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, password TEXT, name TEXT, phone TEXT, role INTEGER)");
-        db.execSQL("CREATE TABLE Product (productID INTEGER PRIMARY KEY AUTOINCREMENT, product_name TEXT, price DECIMAL, description TEXT, image BLOB)");
+        db.execSQL("CREATE TABLE Product (productID INTEGER PRIMARY KEY AUTOINCREMENT, product_name TEXT, price DECIMAL, description TEXT)");
         db.execSQL("CREATE TABLE Orders (orderID INTEGER PRIMARY KEY AUTOINCREMENT, userID INTEGER, order_date DATE, total_amount DECIMAL, FOREIGN KEY (userID) REFERENCES User(userID))");
         db.execSQL("CREATE TABLE OrdersDetail (orderDetailID INTEGER PRIMARY KEY AUTOINCREMENT, orderID INTEGER, productID INTEGER, quantity INTEGER, price DECIMAL, FOREIGN KEY (orderID) REFERENCES Orders(orderID), FOREIGN KEY (productID) REFERENCES Product(productID))");
     }
@@ -57,38 +57,29 @@ public class DBHelper extends SQLiteOpenHelper {
 
     //Product CRUD
 
-    public ArrayList<Product> getAll(){
+    public ArrayList<Product> getproduct(Context context) {
         ArrayList<Product> list = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cs = db.rawQuery("Select * from Product",null);
-        cs.moveToFirst();
-        while(!cs.isAfterLast()){
+        DBHelper helper = new DBHelper(context);
+        SQLiteDatabase db = helper.getReadableDatabase();
+        Cursor cs = db.rawQuery("Select * from Product", null);
+        while(cs.moveToNext()){
             int id = cs.getInt(0);
-            double price = cs.getDouble(3);
-            String proName = cs.getString(2);
-            String desc = cs.getString(1);
-            byte[] images = cs.getBlob(4);
-
-            Product product = new Product(id,proName,price,desc);
-            list.add(product);
+            String proName = cs.getString(1);
+            double price = cs.getDouble(2);
+            String desc = cs.getString(3);
+            list.add(new Product(id,proName,price,desc));
         }
+        cs.close();
+        db.close();
         return list;
     }
 
-    private byte[] ImageViewToByte(ImageView image){
-        Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 80, stream);
-        byte[] bytes = stream.toByteArray();
-        return bytes;
-    }
-    public boolean insertProduct(String productName, double price, String description, ImageView image) {
+    public boolean insertProduct(String productName, double price, String description) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("proName", productName);
+        values.put("product_name", productName);
         values.put("price", price);
-        values.put("desc", description);
-        values.put("image", ImageViewToByte(image));
+        values.put("description", description);
 
         long result = db.insert("Product", null, values);
         return result != -1;
