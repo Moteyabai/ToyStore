@@ -1,5 +1,6 @@
 package com.example.toystore.Adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -46,7 +47,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProductAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         final Product product = productList.get(position);
         holder.proName.setText(String.valueOf(product.getProductName()));
@@ -71,9 +72,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                         int id = item.getItemId();
                         if (id == R.id.update_menu) {
                             Intent intent = new Intent(mContext, ProductUpdate.class);
-                            intent.putExtra("id", product.getProductID());
+                            intent.putExtra("id", String.valueOf(product.getProductID()));
                             intent.putExtra("proName", product.getProductName());
-                            intent.putExtra("price", product.getPrice());
+                            intent.putExtra("price", String.valueOf(product.getPrice()));
                             intent.putExtra("desc", product.getDescription());
                             mContext.startActivity(intent);
                         } else if (id == R.id.delete_menu) {

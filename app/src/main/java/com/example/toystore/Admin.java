@@ -6,7 +6,10 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.toystore.Adapters.ProductAdapter;
 import com.example.toystore.Models.Product;
 
 import java.util.ArrayList;
@@ -14,6 +17,8 @@ import java.util.ArrayList;
 public class Admin extends AppCompatActivity {
 
     Button logout, user, product;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +29,8 @@ public class Admin extends AppCompatActivity {
 
         user = findViewById(R.id.btnUser);
         product = findViewById(R.id.btnProduct);
+
+
 
 
         logout.setOnClickListener(new View.OnClickListener() {

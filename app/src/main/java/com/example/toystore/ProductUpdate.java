@@ -14,8 +14,7 @@ public class ProductUpdate extends AppCompatActivity {
 
     TextView eId;
     EditText eProName, ePrice, eDesc;
-    String id, name, desc;
-    double price;
+    String id, name, desc,price;
     Button updateBtn;
     DBHelper helper;
     @Override
@@ -36,14 +35,14 @@ public class ProductUpdate extends AppCompatActivity {
         if(intent!=null){
             id = intent.getStringExtra("id");
             name = intent.getStringExtra("proName");
-            price = Double.parseDouble(intent.getStringExtra("price"));
+            price = intent.getStringExtra("price");
             desc = intent.getStringExtra("desc");
         }
 
         //Show product data
         eId.setText(id);
         eProName.setText(name);
-        ePrice.setText((int) price);
+        ePrice.setText(price);
         eDesc.setText(desc);
 
         updateBtn.setOnClickListener(new View.OnClickListener() {
@@ -51,11 +50,13 @@ public class ProductUpdate extends AppCompatActivity {
             public void onClick(View v) {
                 int nID = Integer.parseInt(eId.getText().toString());
                 String nName = eProName.getText().toString();
-                double nPrice = Double.parseDouble(ePrice.getText().toString());
+                String nPrice = ePrice.getText().toString();
                 String nDesc = eDesc.getText().toString();
 
                 if(helper.updateProduct(nID,nName,nPrice,nDesc)){
                     Toast.makeText(ProductUpdate.this, "Updated!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(ProductUpdate.this, ProductList.class);
+                    startActivity(intent);
                 }else{
                     Toast.makeText(ProductUpdate.this, "Error!", Toast.LENGTH_SHORT).show();
                 }

@@ -85,11 +85,11 @@ public class DBHelper extends SQLiteOpenHelper {
         return result != -1;
     }
 
-    public boolean updateProduct(int userID, String productName, double price, String description) {
+    public boolean updateProduct(int userID, String productName, String price, String description) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("product_name", productName);
-        values.put("price", price);
+        values.put("price", Double.parseDouble(price));
         values.put("description", description);
 
         int rowsAffected = db.update("Product", values, "productID = ?", new String[]{String.valueOf(userID)});

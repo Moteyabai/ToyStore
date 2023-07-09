@@ -38,7 +38,7 @@ public class Register extends AppCompatActivity {
                 String confirmPass = confirm.getText().toString();
                 String userName = name.getText().toString();
                 String userPhone = phone.getText().toString();
-                int userRole = 0; // Default role is 1
+                int userRole = 1; // Default role is 1
 
                 if (TextUtils.isEmpty(userEmail) || TextUtils.isEmpty(userPassword) ||
                         TextUtils.isEmpty(confirmPass) || TextUtils.isEmpty(userName) ||
