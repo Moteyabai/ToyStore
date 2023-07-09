@@ -19,9 +19,7 @@ public class Admin extends AppCompatActivity {
 
     Button logout, user, product;
 
-    Button logout;
     ArrayList<Product> proList;
-    DBHelper helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,17 +30,6 @@ public class Admin extends AppCompatActivity {
 
         user = findViewById(R.id.btnUser);
         product = findViewById(R.id.btnProduct);
-
-        RecyclerView rv = (RecyclerView) findViewById(R.id.rv_product);
-
-        proList = new ArrayList<>();
-        proList.add(new Product(1, "Toy", 30000, "something"));
-
-        ProductAdapter adapter = new ProductAdapter(proList);
-
-        rv.setAdapter(adapter);
-
-        rv.setLayoutManager(new LinearLayoutManager(this));
 
 
         logout.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +45,14 @@ public class Admin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Admin.this, UserList.class);
+                startActivity(intent);
+            }
+        });
+
+        product.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Admin.this, ProductList.class);
                 startActivity(intent);
             }
         });
