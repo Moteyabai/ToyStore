@@ -1,10 +1,9 @@
 package com.example.toystore;
 
-import android.database.Cursor;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -36,7 +35,7 @@ public class ProductList extends AppCompatActivity {
         proList = helper.getproduct(ProductList.this);
 
 
-        ProductAdapter adapter = new ProductAdapter(proList);
+        ProductAdapter adapter = new ProductAdapter(this,proList);
 
         rv.setAdapter(adapter);
 
@@ -45,8 +44,10 @@ public class ProductList extends AppCompatActivity {
         addPro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(ProductList.this, ProductAddNew.class);
+                startActivity(intent);
             }
         });
+
     }
 }

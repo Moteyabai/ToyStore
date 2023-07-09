@@ -85,6 +85,23 @@ public class DBHelper extends SQLiteOpenHelper {
         return result != -1;
     }
 
+    public boolean updateProduct(int userID, String productName, double price, String description) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("product_name", productName);
+        values.put("price", price);
+        values.put("description", description);
+
+        int rowsAffected = db.update("Product", values, "productID = ?", new String[]{String.valueOf(userID)});
+        return rowsAffected > 0;
+    }
+
+    public boolean deleteProduct(int proID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        int rowsAffected = db.delete("Product", "productID = ?", new String[]{String.valueOf(proID)});
+        return rowsAffected > 0;
+    }
+
 
     public boolean checkEmail(String email) {
         SQLiteDatabase db = this.getReadableDatabase();

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="640dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="30dp"
         app:cardCornerRadius="30dp"
         app:cardElevation="20dp">
@@ -88,7 +88,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="@color/black"
                 android:text="Register"
                 android:textSize="18sp" />
 
@@ -97,7 +96,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="10dp"
-                android:backgroundTint="@color/black"
                 android:text="Login Now"
                 android:textSize="18sp" />
 
