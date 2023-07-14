@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.toystore.DBHelper;
+import com.example.toystore.Models.OrderDetail;
 import com.example.toystore.Models.Product;
 import com.example.toystore.ProductUpdate;
 import com.example.toystore.R;
@@ -58,6 +59,18 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder>{
         proIDValue = product.getProductID();
 
         //Edit
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, OrderDetail.class);
+                intent.putExtra("productId", product.getProductID());
+                intent.putExtra("productName", product.getProductName());
+                intent.putExtra("price", product.getPrice());
+                intent.putExtra("description", product.getDescription());
+                mContext.startActivity(intent);
+            }
+        });
+
 
 
     }
@@ -80,4 +93,5 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder>{
             buy = (Button) itemView.findViewById(R.id.buy);
         }
     }
+
 }
