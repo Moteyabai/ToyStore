@@ -89,6 +89,8 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
                 android:text="Register"
+                android:textColor="@color/black"
+                android:background="#FDD835"
                 android:textSize="18sp" />
 
             <Button
@@ -97,6 +99,8 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="10dp"
                 android:text="Login Now"
+                android:textColor="@color/black"
+                android:background="#FDD835"
                 android:textSize="18sp" />
 
 

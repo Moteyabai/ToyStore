@@ -7,11 +7,14 @@ public class Product {
     private double price;
     private String description;
 
-    public Product(int productID, String productName, double price, String description) {
+    private String image;
+
+    public Product(int productID, String productName, double price, String description, String image) {
         this.productID = productID;
         this.productName = productName;
         this.price = price;
         this.description = description;
+        this.image = image;
     }
 
     public int getProductID() {
@@ -44,5 +47,13 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

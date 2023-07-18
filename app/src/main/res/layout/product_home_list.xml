@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="100dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:elevation="2dp"
@@ -10,61 +10,62 @@
     app:cardCornerRadius="8dp"
     >
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <Button
-            android:text="Buy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/buy"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true" />
+        android:layout_height="90dp"
+        android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:scaleType="fitXY"
-            android:paddingLeft="5dp"
             android:id="@+id/viewInage"
+            android:layout_width="67dp"
+            android:layout_height="67dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:paddingLeft="5dp"
+            android:scaleType="fitXY"
             android:src="@drawable/ic_launcher_background" />
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/txtProName"
-            android:text="something"
-            android:layout_marginLeft="70dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtDesc"
-            android:text="Desc"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="70dp" />
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="18dp">
+            <TextView
+                android:id="@+id/txtProName"
+                android:layout_width="163dp"
+                android:layout_height="wrap_content"
+                android:text="something" />
 
-        <TextView
-            android:id="@+id/price"
+            <TextView
+                android:id="@+id/txtDesc"
+                android:layout_width="163dp"
+                android:layout_height="wrap_content"
+                android:text="Desc" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="115dp"
-            android:text="400$" />
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="60dp">
 
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="400$" />
+
+        </LinearLayout>
         <TextView
             android:id="@+id/proId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginBottom="100dp"
             android:text="1" />
-    </RelativeLayout>
+
+
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

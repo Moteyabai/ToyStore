@@ -70,6 +70,7 @@ public class UserUpdate extends AppCompatActivity {
                     // Trở lại trang UserList
                     Intent intent = new Intent(UserUpdate.this, UserList.class);
                     startActivity(intent);
+                    finish();
                 } else {
                     Toast.makeText(UserUpdate.this, "Failed to update user", Toast.LENGTH_SHORT).show();
                 }
