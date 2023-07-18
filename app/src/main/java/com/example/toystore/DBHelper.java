@@ -5,13 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.widget.ImageView;
 
 import com.example.toystore.Models.Product;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class DBHelper extends SQLiteOpenHelper {
@@ -22,9 +18,10 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE User (userID INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, password TEXT, name TEXT, phone TEXT, role INTEGER)");
-        db.execSQL("CREATE TABLE Product (productID INTEGER PRIMARY KEY AUTOINCREMENT, product_name TEXT, price DECIMAL, description TEXT)");
+        db.execSQL("CREATE TABLE Product (productID INTEGER PRIMARY KEY AUTOINCREMENT, product_name TEXT, price DECIMAL, description TEXT, image TEXT)");
         db.execSQL("CREATE TABLE Orders (orderID INTEGER PRIMARY KEY AUTOINCREMENT, userID INTEGER, order_date DATE, total_amount DECIMAL, FOREIGN KEY (userID) REFERENCES User(userID))");
         db.execSQL("CREATE TABLE OrdersDetail (orderDetailID INTEGER PRIMARY KEY AUTOINCREMENT, orderID INTEGER, productID INTEGER, quantity INTEGER, price DECIMAL, FOREIGN KEY (orderID) REFERENCES Orders(orderID), FOREIGN KEY (productID) REFERENCES Product(productID))");
+        db.execSQL("INSERT INTO Product VALUES(null, 'Lego City', 20000, 'lego about city theme', 'https://pplay.vn/media/catalog/product/cache/1/image/485x440/9df78eab33525d08d6e5fb8d27136e95/6/0/60130_alt1.jpg')");
     }
 
     @Override
@@ -67,30 +64,33 @@ public class DBHelper extends SQLiteOpenHelper {
             String proName = cs.getString(1);
             double price = cs.getDouble(2);
             String desc = cs.getString(3);
-            list.add(new Product(id,proName,price,desc));
+            String image = cs.getString(4);
+            list.add(new Product(id,proName,price,desc,image));
         }
         cs.close();
         db.close();
         return list;
     }
 
-    public boolean insertProduct(String productName, double price, String description) {
+    public boolean insertProduct(String productName, double price, String description, String image) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("product_name", productName);
         values.put("price", price);
         values.put("description", description);
+        values.put("image",image);
 
         long result = db.insert("Product", null, values);
         return result != -1;
     }
 
-    public boolean updateProduct(int userID, String productName, String price, String description) {
+    public boolean updateProduct(int userID, String productName, String price, String description, String image) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("product_name", productName);
         values.put("price", Double.parseDouble(price));
         values.put("description", description);
+        values.put("image",image);
 
         int rowsAffected = db.update("Product", values, "productID = ?", new String[]{String.valueOf(userID)});
         return rowsAffected > 0;

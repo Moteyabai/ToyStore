@@ -13,8 +13,8 @@ import android.widget.Toast;
 public class ProductUpdate extends AppCompatActivity {
 
     TextView eId;
-    EditText eProName, ePrice, eDesc;
-    String id, name, desc,price;
+    EditText eProName, ePrice, eDesc, eImage;
+    String id, name, desc,price, image;
     Button updateBtn;
     DBHelper helper;
     @Override
@@ -25,6 +25,7 @@ public class ProductUpdate extends AppCompatActivity {
         ePrice = (EditText) findViewById(R.id.priceUpdate);
         eDesc = (EditText) findViewById(R.id.descUpdate);
         eId = (TextView) findViewById(R.id.getId);
+        eImage = (EditText) findViewById(R.id.imageUpdate);
         updateBtn = (Button) findViewById(R.id.proUpdate);
 
         helper = new DBHelper(this);
@@ -37,6 +38,7 @@ public class ProductUpdate extends AppCompatActivity {
             name = intent.getStringExtra("proName");
             price = intent.getStringExtra("price");
             desc = intent.getStringExtra("desc");
+            image = intent.getStringExtra("image");
         }
 
         //Show product data
@@ -44,6 +46,7 @@ public class ProductUpdate extends AppCompatActivity {
         eProName.setText(name);
         ePrice.setText(price);
         eDesc.setText(desc);
+        eImage.setText(image);
 
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,8 +55,9 @@ public class ProductUpdate extends AppCompatActivity {
                 String nName = eProName.getText().toString();
                 String nPrice = ePrice.getText().toString();
                 String nDesc = eDesc.getText().toString();
+                String nImage = eImage.getText().toString();
 
-                if(helper.updateProduct(nID,nName,nPrice,nDesc)){
+                if(helper.updateProduct(nID,nName,nPrice,nDesc, nImage)){
                     Toast.makeText(ProductUpdate.this, "Updated!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(ProductUpdate.this, ProductList.class);
                     startActivity(intent);

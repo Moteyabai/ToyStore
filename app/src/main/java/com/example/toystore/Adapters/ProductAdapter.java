@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ import com.example.toystore.Models.Product;
 import com.example.toystore.ProductList;
 import com.example.toystore.ProductUpdate;
 import com.example.toystore.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -54,6 +56,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         holder.desc.setText(product.getDescription());
         holder.proId.setText(String.valueOf(product.getProductID()));
         holder.price.setText((int) product.getPrice() + "$");
+        String imageURL = product.getImage();
+        Picasso.get().load(imageURL).into(holder.image);
 
         proIDValue = product.getProductID();
 
@@ -76,6 +80,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                             intent.putExtra("proName", product.getProductName());
                             intent.putExtra("price", String.valueOf(product.getPrice()));
                             intent.putExtra("desc", product.getDescription());
+                            intent.putExtra("image", product.getImage());
                             mContext.startActivity(intent);
                         } else if (id == R.id.delete_menu) {
                             if(helper.deleteProduct(product.getProductID())){
@@ -102,6 +107,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView proId,proName,desc, price;
+
+        ImageView image;
         ImageButton edit;
 
         public ViewHolder(@NonNull View itemView) {
@@ -110,6 +117,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             proName = (TextView) itemView.findViewById(R.id.txtProName);
             desc = (TextView) itemView.findViewById(R.id.txtDesc);
             price = (TextView) itemView.findViewById(R.id.price);
+            image = (ImageView) itemView.findViewById(R.id.viewInage);
             edit = (ImageButton) itemView.findViewById(R.id.options);
         }
     }

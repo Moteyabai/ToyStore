@@ -11,9 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Toy List"
-        android:textSize="20dp"
-        android:textColor="@color/white"
-        android:background="#E88943"
+        android:textSize="30dp"
+        android:textColor="@color/black"
+        android:background="#FDD835"
         android:textAlignment="center"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,6 +22,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add"
+        android:textColor="@color/black"
+        android:background="#FDD835"
         app:layout_constraintBottom_toTopOf="@+id/rv_product"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
